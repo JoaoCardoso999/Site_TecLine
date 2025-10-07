@@ -79,7 +79,7 @@
         </div>
         <div class="card-body">
 
-          <form class="row g-3" action="../PHP/cadastro_marcas.php" method="post" enctype="multipart/form-data">
+          <form class="row g-3" action="../PHP/cadastro_marca.php" method="post" enctype="multipart/form-data">
             <div class="col-12 col-md-3 text-center">
               <div class="brand-thumb border rounded d-flex align-items-center justify-content-center overflow-hidden">
                 <img id="brandPreview" alt="Prévia da marca" class="img-fluid d-none" />
@@ -156,7 +156,7 @@
           <h5 class="m-0">Cadastro de Produtos</h5>
         </div>
         <div class="card-body">
-          <form action="" method="post" class="row g-3" enctype="multipart/form-data">
+          <form action="../PHP/cadastro_produtos.php" method="post" class="row g-3" enctype="multipart/form-data">
 
             <!-- Imagens (3) -->
             <div class="col-12">
@@ -199,13 +199,13 @@
               <label for="pPreco" class="form-label">Preço</label>
               <input name="preco" type="number" id="pPreco" class="form-control" min="0" step="0.01" placeholder="0,00" />
             </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
               <label for="pDescricao" class="form-label">Descrição</label>
-              <input name="Descricao" type="number" id="pDescricao" class="form-control" min="0" step="0.01" placeholder="0,00" />
+              <input name="Descricao" type="text" id="pDescricao" class="form-control" placeholder=""/>
             </div>
             <div class="col-md-3">
               <label for="pCodigo" class="form-label">Código / SKU</label>
-              <input name="codigo" type="text" id="pCodigo" class="form-control" />
+              <input name="codigo" type="number" id="pCodigo" class="form-control" />
             </div>
             <div class="col-md-3">
               <label for="pPrecoPromo" class="form-label">Preço promocional</label>
