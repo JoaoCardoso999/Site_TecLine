@@ -45,12 +45,12 @@ if(n1=10){
     console.log("Fico em casa!");
 }
 
+
 let carro = {
 cor: "preto",
 placa: "KRE41234",
 modelo: "Fusca",
 KmRodados: "120000",
 som: true,
-Arcondicionado: true,
-
+Arcondicionado: false,
 }

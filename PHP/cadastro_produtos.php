@@ -12,6 +12,7 @@ function redirecWith($url, $params = [])
   exit;
 }
 
+
 /* Função para ler imagem e converter em BLOB */
 function readImageToBlob(?array $file): ?string
 {

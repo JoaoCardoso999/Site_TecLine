@@ -59,7 +59,7 @@
 
             <div class="col-12 col-md-6">
               <label for="catLista" class="form-label">Categorias criadas</label>
-              <select id="catLista" class="form-select">
+              <select id="pCategoria" class="form-select">
                 <option selected>Selecione uma categoria...</option>
              
               </select>
@@ -111,30 +111,8 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td><div class="logo-sample rounded"></div></td>
-                          <td>TechPro</td>
-                          <td class="text-end">
-                            <button class="btn btn-sm btn-outline-secondary">Editar</button>
-                            <button class="btn btn-sm btn-outline-danger">Excluir</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><div class="logo-sample rounded"></div></td>
-                          <td>GigaMax</td>
-                          <td class="text-end">
-                            <button class="btn btn-sm btn-outline-secondary">Editar</button>
-                            <button class="btn btn-sm btn-outline-danger">Excluir</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><div class="logo-sample rounded"></div></td>
-                          <td>Mobix</td>
-                          <td class="text-end">
-                            <button class="btn btn-sm btn-outline-secondary">Editar</button>
-                            <button class="btn btn-sm btn-outline-danger">Excluir</button>
-                          </td>
-                        </tr>
+                        
+                      
                       </tbody>
                     </table>
                   </div>
@@ -214,18 +192,14 @@
               <label name="categoriaproduto" for="pCategoria" class="form-label">Categoria</label>
               <select id="pCategoria" class="form-select">
                 <option selected>Selecione...</option>
-                <option>Informática</option>
-                <option>Celulares</option>
-                <option>Acessórios</option>
+              
               </select>
             </div>
             <div class="col-md-6">
               <label for="pMarca" class="form-label">Marca</label>
               <select name="marcaproduto" id="pMarca" class="form-select">
                 <option selected>Selecione...</option>
-                <option>TechPro</option>
-                <option>GigaMax</option>
-                <option>Mobix</option>
+            
               </select>
             </div>
 
@@ -327,8 +301,7 @@
 </section>
 
 
-    
-
+   
   <!-- Rodapé (igual ao anterior) -->
   <footer class="footer py-4  border-top">
     <div class="container text-center small text-muted">
@@ -371,6 +344,6 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-    <script src="../JS/produtos_logista.js"></script>
+     <script src="../JS/produtos_logista.js"></script>
   </body>
 </html>
