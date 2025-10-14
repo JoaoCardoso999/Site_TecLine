@@ -19,20 +19,54 @@ function listarcategorias(nomeid){
 })();
 }
 
-// Funcao para listar marcas em tabelas
-function listarMarcas(nometabelamarcas) {
-// Espera o HTML carregar para só buscar a listar de marcas
-document.addEventListener('DOMContentLoaded',()=>{
-    // Captura o local onde sera listado os dados no html
-const tbody = document.getElementById(nometabelamarcas);
-//endpoint que devolve json
-const url = "../php/cadastro_marcas.php?listar=1";
+async function listMarcas(nomeid) {
+  const sel = document.querySelector(nomeid);
+  try {
+    // Faz a requisição para o PHP (já retorna JSON)
+    const r = await fetch("../PHP/cadastro_marca.php?listar=1");
+    if (!r.ok) throw new Error("Falha ao listar marcas!");
 
-// --- util 1) esc(): escapa caracteres especiais no texto (evita quebrar o HTML)
-   const esc = s => (s||'').replace(/[&<>"']/g, c => ({
+    // Converte o retorno para JSON
+    const data = await r.json();
+
+    // Verifica se a resposta contém o array de marcas
+    if (!data.ok || !Array.isArray(data.marcas)) {
+      throw new Error("Formato de resposta inválido");
+    }
+
+    // Limpa o select e adiciona o item inicial
+    sel.innerHTML = '';
+
+    // Percorre as marcas e adiciona apenas o nome em cada option
+    data.marcas.forEach(marca => {
+      const opt = document.createElement("option");
+      opt.value = marca.idMarcas;     // valor do option = ID da marca
+      opt.textContent = marca.nome;   // texto visível = nome
+      sel.appendChild(opt);
+    });
+
+  } catch (e) {
+    console.error(e);
+    sel.innerHTML = "<option disabled>Erro ao carregar marcas</option>";
+  }
+}
+
+
+// função de listar marcas em tabelas
+function listarMarcas(nometabelamarcas){
+// Espera o HTML carregar para só então buscar e preencher a tabela
+document.addEventListener('DOMContentLoaded', () => {
+  // <tbody> onde as linhas serão inseridas
+  const tbody = document.getElementById('tabelaMarcas');
+
+  // Endpoint que devolve JSON { ok, count, marcas[] }
+  const url = '../PHP/cadastro_marca.php?listar=1';
+
+  // --- util 1) esc(): escapa caracteres especiais no texto (evita quebrar o HTML)
+  const esc = s => (s||'').replace(/[&<>"']/g, c => ({
     '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
   }[c]));
- 
+
   // --- util 2) ph(): gera um SVG base64 com as iniciais, usado quando não há imagem
   const ph  = n => 'data:image/svg+xml;base64,' + btoa(
     `<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
@@ -44,13 +78,13 @@ const url = "../php/cadastro_marcas.php?listar=1";
      </svg>`
   );
 
-// Configurando a tabela com os dados
- const row = m => `
+  // --- util 3) row(): recebe 1 marca e retorna o HTML <tr> correspondente
+  // Usa a imagem em base64 se existir; senão usa o placeholder SVG
+  const row = m => `
     <tr>
       <td>
         <img
-          src="${m.imagem ? `data:${m.mime||'image/jpeg'};base64,${m.imagem}`
-          : ph(m.nome)}"
+          src="${m.imagem ? `data:${m.mime||'image/jpeg'};base64,${m.imagem}` : ph(m.nome)}"
           alt="${esc(m.nome||'Marca')}"
           style="width:60px;height:60px;object-fit:cover;border-radius:8px">
       </td>
@@ -61,36 +95,31 @@ const url = "../php/cadastro_marcas.php?listar=1";
       </td>
     </tr>`;
 
-    // Fazer a requisição ao php e preencher a tabela
-    fetch(url,{cache: 'no-store'})
-    // converter o json e redenriza
+  // Faz a requisição ao PHP (sem cache) e preenche a tabela
+  fetch(url, { cache: 'no-store' })
+    // Converte a resposta em JSON
     .then(r => r.json())
-    // trata o json e renderiza
-    .then(d =>{
-        if(!d.ok)throw new Error(d.Error || "Erro ao listar");
-    // Se houver marcas, monta as linhas; senao, mostra uma mensagem
-    tbody.innerHTML = d.marcas?.lenght
-    ? d.marcas.map(row).join('')
-    :`<tr><td colspan="3">Nenhuma marca cadastrada.</td></tr>`;
+    // Trata o JSON e renderiza
+    .then(d => {
+      // Se o backend sinalizou erro, lança para o .catch
+      if (!d.ok) throw new Error(d.error || 'Erro ao listar');
 
+      // Se houver marcas, monta as linhas; senão, mostra mensagem de vazio
+      tbody.innerHTML = d.marcas?.length
+        ? d.marcas.map(row).join('')            // junta todas as <tr> num único HTML
+        : `<tr><td colspan="3">Nenhuma marca cadastrada.</td></tr>`;
     })
-
-    // Qualquer erro ele executa este codigo
-.catch(err =>{
-    tbody.innerHTML= `<str><td colspan="3">Falha ao carregar:
-    ${esc(err.message)}</td></tr>`;
-
-})
-
-
+    // Qualquer erro (rede, JSON inválido, etc.) cai aqui
+    .catch(err => {
+      tbody.innerHTML = `<tr><td colspan="3">Falha ao carregar: ${esc(err.message)}</td></tr>`;
+    });
 });
-
 }
 
 
-
+listMarcas("#pMarca");
 listarMarcas("#tabelaMarcas");
-listarcategorias("#pCategorias");
+listarcategorias("#pCat");
 listarcategorias("#prodcat");
 
 

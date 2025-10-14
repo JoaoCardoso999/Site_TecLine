@@ -16,6 +16,7 @@ header("Location:  $url");
 // fecha o script
 exit;
 }
+
 // códigos de listagem de dados
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])) {
 

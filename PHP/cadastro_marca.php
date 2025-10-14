@@ -24,6 +24,56 @@ function readImageToBlob(?array $file): ?string {
   return $content === false ? null : $content;
 }
 
+// Listagem de marcas com imagem
+// LISTAGEM DE MARCAS COM IMAGEM
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])){
+// Define o tipo de resposta: JSON e com codificação UTF-8
+  header('Content-Type: application/json; charset=utf-8');
+
+  try {
+    // Faz a consulta no banco — busca id, nome e imagem (blob)
+    $stmt = $pdo->query("SELECT idMarcas, nome, imagem FROM Marcas ORDER BY idMarcas DESC");
+
+    // Pega todas as linhas retornadas como array associativo
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Mapeia cada linha para o formato desejado:
+    //  - converte o id para inteiro
+    //  - mantém o nome como texto
+    //  - converte o blob da imagem para base64 (ou null se não houver imagem)
+    $marcas = array_map(function ($r) {
+      return [
+        'idMarcas' => (int)$r['idMarcas'],
+        'nome'     => $r['nome'],
+        'imagem'   => !empty($r['imagem']) ? base64_encode($r['imagem']) : null
+      ];
+    }, $rows);
+
+    // Retorna o JSON com:
+    //  - ok: true  → indica sucesso
+    //  - count: quantidade de marcas encontradas
+    //  - marcas: array com todos os dados
+    echo json_encode(
+      ['ok'=>true,'count'=>count($marcas),'marcas'=>$marcas],
+      JSON_UNESCAPED_UNICODE // mantém acentos corretamente
+    );
+
+  } catch (Throwable $e) {
+    // Se acontecer qualquer erro (ex: problema no banco),
+    // envia código HTTP 500 e o erro no formato JSON
+    http_response_code(500);
+    echo json_encode(['ok'=>false,'error'=>$e->getMessage()]);
+  }
+
+  //  Interrompe a execução do restante do arquivo.
+  
+  exit;
+
+}
+
+
+
+
 try {
   // SE O METODO DE ENVIO FOR DIFERENTE DO POST
   if ($_SERVER["REQUEST_METHOD"] !== "POST") {

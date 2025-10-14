@@ -42,23 +42,47 @@ redirecWith("../paginas/cadastro_frete.html",
       .$e->getMessage()]);
 }
 
-/* Inserir o frete no banco de dados */
-    $sql ="INSERT INTO 
-    Formas_pagamento (nome)
-     Values (:nome)";
+// códigos de cadastro
+try{
+// SE O METODO DE ENVIO FOR DIFERENTE DO POST
+    if($_SERVER["REQUEST_METHOD"] !== "POST"){
+        //VOLTAR À TELA DE CADASTRO E EXIBIR ERRO
+        redirecWith("../paginas_logista/cadastro_produtos_logista.html",
+           ["erro"=> "Metodo inválido"]);
+    }
+    // jogando os dados da dentro de váriaveis
+    $nomepagamento = $_POST["nomepagamento"];
+
+     // VALIDANDO OS CAMPOS
+// criar uma váriavel para receber os erros de validação
+    $erros_validacao=[];
+    //se qualquer campo for vazio
+    if($nomepagamento === "" ){
+        $erros_validacao[]="Preencha todos os campos";
+    }
+
+    /* Inserir a categoria no banco de dados */
+    $sql ="INSERT INTO Formas_pagamento (nome)
+     Values (:nomepagamento)";
      // executando o comando no banco de dados
      $inserir = $pdo->prepare($sql)->execute([
-        ":nomepagamento" => $nomepagamento,   
+        ":nomepagamento" => $nomepagamento, 
      ]);
-
-      /* Verificando se foi cadastrado no banco de dados */
+     /* Verificando se foi cadastrado no banco de dados */
      if($inserir){
-        redirecWith("../php/cadastro_frete.html",
+        redirecWith("../paginas_logista/frete_pagamento_logista.html",
         ["cadastro" => "ok"]) ;
      }else{
-        redirecWith("../php/cadastro_frete.html"
-        ,["erro" =>"Erro ao cadastrar no banco
-         de dados"]);
+        redirecWith("../paginas_logista/frete_pagamento_logista.html",["erro" 
+        =>"Erro ao cadastrar no banco de dados"]);
      }
+
+
+}catch(Exception $e){
+ redirecWith("../paginas_logista/cadastro_produtos_logista.html",
+      ["erro" => "Erro no banco de dados: "
+      .$e->getMessage()]);
+}
+
 
 ?>
