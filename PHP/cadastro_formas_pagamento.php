@@ -18,28 +18,50 @@ header("Location:  $url");
 exit;
 }
 
-try{
+// LISTAGEM DE FORMAS_PAGAMENTO
+if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])) {
+  try {
+    // Comando de listagem
+    $sqllistar = "SELECT idformas_pagamento AS id, nome 
+                  FROM Formas_pagamento 
+                  ORDER BY nome";
 
- // SE O METODO DE ENVIO FOR DIFERENTE DO POST
-    if($_SERVER["REQUEST_METHOD"] !== "POST"){
-        //VOLTAR À TELA DE CADASTRO E EXIBIR ERRO
-        redirecWith("../paginas/frete_pagamento.html",
-           ["erro"=> "Metodo inválido"]);
+    // Executa
+    $stmtlistar = $pdo->query($sqllistar);
+    $listar = $stmtlistar->fetchAll(PDO::FETCH_ASSOC);
+
+    // Formato do retorno
+    $formato = isset($_GET["format"]) ? strtolower($_GET["format"]) : "option";
+
+    if ($formato === "json") {
+      header("Content-Type: application/json; charset=utf-8");
+      echo json_encode(["ok" => true, "formas_pagamento" => $listar], JSON_UNESCAPED_UNICODE);
+      exit;
     }
 
-    $nomepagamento = $_POST["nomepagamento"];
-
-// validação
-    $erros_validacao=[];
-    //se qualquer campo for vazio
-    if($nomepagamento === ""){
-        $erros_validacao[]="Preencha todos os campos";
+    // RETORNO PADRÃO (options)
+    header("Content-Type: text/html; charset=utf-8");
+    foreach ($listar as $lista) {
+      $id   = (int)$lista["id"];
+      $nome = htmlspecialchars($lista["nome"], ENT_QUOTES, "UTF-8");
+      echo "<option value=\"{$id}\">{$nome}</option>\n";
     }
-    
-}catch(Exception $e){
-redirecWith("../paginas/cadastro_frete.html",
-      ["erro" => "Erro no banco de dados: "
-      .$e->getMessage()]);
+    exit;
+
+  } catch (Throwable $e) {
+    // Erro na listagem
+    if (isset($_GET["format"]) && strtolower($_GET["format"]) === "json") {
+      header("Content-Type: application/json; charset=utf-8", true, 500);
+      echo json_encode(
+        ["ok" => false, "error" => "Erro ao listar formas de pagamento", "detail" => $e->getMessage()],
+        JSON_UNESCAPED_UNICODE
+      );
+    } else {
+      header("Content-Type: text/html; charset=utf-8", true, 500);
+      echo "<option disabled>Erro ao carregar formas de pagamento</option>";
+    }
+    exit;
+  }
 }
 
 // códigos de cadastro
