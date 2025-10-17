@@ -24,7 +24,6 @@ function readImageToBlob(?array $file): ?string {
   return $content === false ? null : $content;
 }
 
-// Listagem de marcas com imagem
 // LISTAGEM DE MARCAS COM IMAGEM
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])){
 // Define o tipo de resposta: JSON e com codificação UTF-8
