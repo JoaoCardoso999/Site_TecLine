@@ -1,0 +1,318 @@
+/* ESTILO DE TODAS AS PÁGINAS */
+
+/* Estilo do cabeçalho*/
+.header{    
+background-color:#18CDC4;
+padding: 10px 20px;
+align-items: center;
+display: flex;
+justify-content: space-between;
+}
+
+/* Configurando a logo do site */
+.logo{
+display: flex;
+align-items: center;
+color: white;
+font-size: 18px; /* Tamanho da fonte do texto*/
+font-weight: bold; /* Texto em negrito*/
+}
+
+/* Configuração da barra de pesquisa */
+.seach-box{
+ flex: 1;
+ max-width: 600px; /* Largura máxima */
+ margin: 0 20px; /* Margem superior e lateral */
+ position: relative; /* Posição */
+}
+
+.seach-box input{ /* Configuração da parte de dentro */
+ width: 100%; /* Preencher toda a área */
+ padding: 10px 40px 10px 15px; /* Definindo o espaço cima, direita, baixo, esquerda*/
+ border-radius: 20px; /* Borda da caixa */
+ font-size: 16px; 
+}
+
+footer {
+  margin-top: 40px; /* espaço acima do rodapé */
+}
+
+/* Configurando os icones do menu superior */
+.icons{
+    display: flex; /*  Os icones ficam flexiveis com a mudança da tela */
+    gap: 15px; /*  Espaco entre os icones */
+    align-items: center; /*  Centraliza os icones no meio do menu */
+    margin-right: 20px; /*  Da um espaco do icone com a borda lateral do menu  */
+}
+
+.icons img{ /*  Configurando as imagens dos icones */
+  width: 32px;
+  height: 32px;
+  cursor: pointer; /*  Margens */
+}
+
+/* Inicio do Formulário de Cadastro ----------------------- */
+body {
+  background-color: #20c9c9; /* fundo azul esverdeado */
+}
+
+.cadastro-card {
+  max-width: 600px;
+  width: 100%;
+  background-color: #18CDC4; /* fundo mais claro do card */
+}
+
+.cadastro-card h3 {
+  font-weight: bold;
+  color: #000;  
+}
+
+.btn-warning {
+  border-radius: 10px;
+}
+/* Fim do Formulário de Cadastro -------------------------- */
+
+/* Inicio da Tela de Login ------------------------------- */
+body {
+  background-color: #DADADA; /* mesmo fundo da tela de cadastro */
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  background-color: #18CDC4; /* fundo mais claro do card */
+}
+
+.login-card h3 {
+  font-weight: bold;
+  color: #000;
+}
+
+.btn-warning {
+  border-radius: 10px;
+}
+/* Fim da Tela de Login ---------------------------------- */
+
+/* Inicio da Tela Home ------------------------------------ */
+.bg-teal {
+  background-color: #20c9c9 !important;
+}
+
+.bg-teal-dark {
+  background-color: #00a5a5 !important;
+}
+
+.navbar .form-control {
+  border-radius: 20px;
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  font-weight: 600;
+}
+
+footer h6 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+/* Fim da Tela Home --------------------------------------- */
+
+/* Inicio do Carrossel ----------------------------------- */
+.carousel-inner img {
+  height: 350px;
+  object-fit: cover;
+}
+
+#carouselHome {
+  margin-top: 30px; /* espaço entre cabeçalho e carrossel */
+}
+
+/* Fim do Carrossel -------------------------------------- */
+
+/* Inicio do Card de Produto ----------------------------- */
+.produto-detalhado {
+  position: relative;
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.produto-detalhado img {
+  height: 180px;
+  object-fit: contain;
+  padding: 10px;
+  background-color: #fff;
+}
+
+/* Desconto */
+.desconto {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #00a5a5;
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Avaliação */
+.avaliacao {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Nome do produto */
+.produto-nome {
+  font-size: 0.95rem;
+  font-weight: 500;
+  min-height: 48px;
+}
+
+/* Preços */
+.preco-antigo {
+  text-decoration: line-through;
+  color: #888;
+  margin-bottom: 0;
+}
+
+.preco-novo {
+  color: #00a5a5;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.preco-novo .avista {
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+.parcelamento {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Botão comprar */
+.btn-comprar {
+  background-color: #00c9c9;
+  color: #fff;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.btn-comprar:hover {
+  background-color: #009999;
+  color: #fff;
+}
+/* Fim do Card de Produto -------------------------------- */
+
+/* Configurando a logo do site */
+.logo-tecline {
+  height: 45px;   /* altura mais equilibrada */
+  width: auto;    /* mantém a proporção */
+  margin-right: 10px; /* espaço do lado direito */
+}
+
+@media (max-width: 768px) {
+  .logo-tecline {
+    height: 35px; /* menor em telas pequenas */
+  }
+}
+
+/* Fim da Logo ------------------------------------------ */
+
+/* Inicio do Cabeçalho ---------------------------------- */
+.bg-tecline {
+  background-color: #00a5a5;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+/* Fim do Cabeçalho ------------------------------------- */
+
+/* Logos das formas de pagamento */
+.pagamento-logo {
+  background-color: #D9D9D9;
+  border-color: #3EA142;
+  border-radius: 10px;
+  border: 2px solid #3EA142 ;
+  height: 50px;   /* aumenta a altura */
+  width: auto;    /* mantém a proporção */
+  margin-right: 10px; /* espaçamento entre elas */
+  margin-top: 10px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.pagamento-logo:hover {
+  transform: scale(1.1); /* efeito hover para destacar */
+}
+
+/* Inicio da Tela de Perfil ------------------------------- */
+.perfil-card {
+  max-width: 900px;
+  margin: auto;
+  background-color: #b2ebf2; /* mesmo padrão das outras telas */
+  border-radius: 15px;
+}
+
+.perfil-card h3 {
+  font-weight: bold;
+  color: #000;
+}
+
+.perfil-card .form-label {
+  color: #333;
+}
+
+.perfil-card .form-control-plaintext {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+}
+/* Fim da Tela de Perfil ---------------------------------- */
+
+/* Carrinho */
+.card {
+  border-radius: 12px;
+}
+
+.card h5, .card h6 {
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #00a5a5;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #008080;
+}
+
+.navbar-nav {
+  display: flex;           /* deixa os itens na horizontal */
+  justify-content: center; /* centraliza no meio */
+  gap: 20px;               /* espaço entre os nomes */
+}
+
+.navbar-nav .nav-item {
+  list-style: none;        /* remove as bolinhas da lista */
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-weight: bold;
+}

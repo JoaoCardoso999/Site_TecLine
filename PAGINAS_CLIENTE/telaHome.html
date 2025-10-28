@@ -1,0 +1,214 @@
+<!doctype html>
+
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8"> <!-- RECONHECE O IDIOMA BR -->
+    <title> Pagina inicial </title> <!-- TITULO DO SITE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/style.css"/> 
+  </head>
+
+  <body>
+    <!-- Inicio da Tela Home ----------------------------------- -->
+<header>
+ <!-- Inicio do Cabeçalho --------------------------------- -->
+<nav class="navbar navbar-expand-lg navbar-light bg-tecline shadow-sm">
+  <div class="container-fluid">
+
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="../IMG/LogoTecLine.png" alt="TecLine Logo" class="logo-tecline me-2">
+    </a>
+
+    <!-- Barra de pesquisa -->
+    <form class="d-none d-md-flex mx-auto w-50">
+      <input class="form-control me-2" type="search" placeholder="Pesquise o seu produto" aria-label="Search">
+      <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+    </form>
+
+    <!-- Ícones -->
+    <div class="d-flex align-items-center">
+      <a href="#" class="nav-link text-white me-3"><i class="bi bi-headset"></i> SAC</a>
+      <a href="#" class="nav-link text-white me-3"><i class="bi bi-cart3"></i> CARRINHO</a>
+      <a href="#" class="nav-link text-white"><i class="bi bi-person-circle"></i> LOGIN</a>
+    </div>
+
+    <!-- Botão menu mobile -->
+    <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#menuCategorias">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- Menu de Categorias -->
+<!-- Menu de Categorias -->
+<div class="bg-tecline">
+  <div class="container">
+    <div class="collapse navbar-collapse show" id="menuCategorias"> 
+      <ul class="navbar-nav d-flex flex-row justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">DEPARTAMENTOS</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PROCESSADORES</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PLACAS DE VÍDEO</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">MONITORES</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PROMOÇÕES</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Fim do Cabeçalho ----------------------------------- -->
+
+</header>
+
+<!-- Banner / Área de Produtos -->
+<!-- Inicio do Carrossel ---------------------------------- -->
+    <div id="carouselBanners" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-indicators" id="banners-indicators"></div>
+      <div class="carousel-inner" id="banners-home">
+        <!-- Itens serão inseridos via JS -->
+        <div class="carousel-item active">
+          <div class="p-3 text-muted">Carregando banners…</div>
+        </div>
+      </div>
+
+      <button class="carousel-control-prev" type="button"
+              data-bs-target="#carouselBanners" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+
+      <button class="carousel-control-next" type="button"
+              data-bs-target="#carouselBanners" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+      </button>
+    </div>
+<!-- Fim do Carrossel ------------------------------------- -->
+
+<!-- Inicio dos Cards de Produtos ------------------------- -->
+<div class="container">
+  <h4 class="mb-4 fw-bold text-center">Produtos em Destaque</h4>
+  <div class="row g-4">
+    
+    <!-- Card 1 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card produto-detalhado shadow-sm h-100">
+        <span class="desconto">-44%</span>
+        <div class="avaliacao">★★★★★ <span class="small">(0)</span></div>
+        <img src="../IMG/Monitor 1.jpg" class="card-img-top" alt="Produto 1">
+        <div class="card-body text-center">
+          <p class="card-text produto-nome">Monitor Dr. Office, 23 Pol, Full HD, 75Hz, HDMI/VGA</p>
+          <p class="preco-antigo">De: R$ 778,00</p>
+          <p class="preco-novo">POR: R$ 435,00 <span class="avista">À vista</span></p>
+          <p class="parcelamento">12x de R$ 36,25 sem juros</p>
+          <button class="btn btn-comprar w-100 fw-bold">
+            <i class="bi bi-cart3 me-2"></i> COMPRAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card produto-detalhado shadow-sm h-100">
+        <span class="desconto">-20%</span>
+        <div class="avaliacao">★★★★☆ <span class="small">(12)</span></div>
+        <img src="../IMG/Fonte 1.jpg" class="card-img-top" alt="Produto 2">
+        <div class="card-body text-center">
+          <p class="card-text produto-nome">Placa de Vídeo RTX 3060 12GB</p>
+          <p class="preco-antigo">De: R$ 3.199,00</p>
+          <p class="preco-novo">POR: R$ 2.499,00 <span class="avista">À vista</span></p>
+          <p class="parcelamento">12x de R$ 208,25 sem juros</p>
+          <button class="btn btn-comprar w-100 fw-bold">
+            <i class="bi bi-cart3 me-2"></i> COMPRAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card produto-detalhado shadow-sm h-100">
+        <span class="desconto">-15%</span>
+        <div class="avaliacao">★★★★★ <span class="small">(5)</span></div>
+        <img src="../IMG/PlacaMae 1.jpg" class="card-img-top" alt="Produto 3">
+        <div class="card-body text-center">
+          <p class="card-text produto-nome">Processador Ryzen 5 5600X</p>
+          <p class="preco-antigo">De: R$ 1.499,00</p>
+          <p class="preco-novo">POR: R$ 1.299,00 <span class="avista">À vista</span></p>
+          <p class="parcelamento">12x de R$ 108,25 sem juros</p>
+          <button class="btn btn-comprar w-100 fw-bold">
+            <i class="bi bi-cart3 me-2"></i> COMPRAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card produto-detalhado shadow-sm h-100">
+        <span class="desconto">-10%</span>
+        <div class="avaliacao">★★★☆☆ <span class="small">(7)</span></div>
+        <img src="../IMG/Fone 1.jpg" class="card-img-top" alt="Produto 4">
+        <div class="card-body text-center">
+          <p class="card-text produto-nome">Teclado Mecânico Gamer RGB</p>
+          <p class="preco-antigo">De: R$ 449,00</p>
+          <p class="preco-novo">POR: R$ 399,00 <span class="avista">À vista</span></p>
+          <p class="parcelamento">12x de R$ 33,25 sem juros</p>
+          <button class="btn btn-comprar w-100 fw-bold">
+            <i class="bi bi-cart3 me-2"></i> COMPRAR
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Fim dos Cards de Produtos ---------------------------- -->
+
+
+<!-- Rodapé -->
+<footer class="bg-teal-dark text-white py-4">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <div class="col-md-4 mb-3">
+        <h6>ATENDIMENTO</h6>
+        <p class="small">
+          Horário de Atendimento:<br>
+          08:00 às 20:00 - Segunda à Sexta<br>
+          09:00 às 15:00 - Sábado, horário de Brasília<br>
+          (exceto Domingos e Feriados)
+        </p>
+      </div>
+
+     <div class="col-md-4 mb-3">
+      <h6>PAGAMENTO</h6>
+      <img src="../IMG/VisaIcone.png" class="pagamento-logo">
+      <img src="../IMG/MasterCardIcone.png" class="pagamento-logo">
+      <img src="../IMG/logos--elo.png" class="pagamento-logo">
+      <img src="../IMG/logos--hipercard.png" class="pagamento-logo">
+      <img src="../IMG/BoletoIcone.png" class="pagamento-logo">
+      <img src="../IMG/PixIcone.png" class="pagamento-logo">
+     </div>
+
+      <div class="col-md-4 mb-3">
+        <h6>NOSSAS REDES SOCIAIS</h6> 
+        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-whatsapp"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Fim da Tela Home -------------------------------------- -->
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<script src="../JS/home_cliente.js"></script>
+  </body>
+</html>

@@ -91,6 +91,113 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["listar"])) {
 }
 
 
+/*  ============================ATUALIZAÇÃO=========================== */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'atualizar') {
+  try {
+
+// alterar para os nomes que vem do 'name' dos campos inputs do html
+    $id        = (int)($_POST['id'] ?? 0); // este dados não precisa mudar
+    $nomecategoria = trim($_POST['nomecategoria'] ?? '');
+    $desconto = trim($_POST['desconto'] ?? '');
+  
+    if ($id <= 0) {
+// alterar para o nome da página html que você está utilizando
+      redirect_with('../PAGINAS_LOGISTA/banners_logista.html', ['erro_banner' => 'ID inválido para edição.']);
+    }
+
+    // validações mínimas (iguais ao cadastro)
+    $erros = [];
+    if ($descricao === '') { $erros[] = 'Informe a descrição.'; }
+    elseif (mb_strlen($descricao) > 45) { $erros[] = 'Descrição deve ter no máximo 45 caracteres.'; }
+
+// validação para datas
+    $dt = DateTime::createFromFormat('Y-m-d', $dataVal);
+    if (!($dt && $dt->format('Y-m-d') === $dataVal)) { $erros[] = 'Data de validade inválida (use YYYY-MM-DD).'; }
+
+// utilizado especificamente para links
+    if ($link !== '' && mb_strlen($link) > 45) { $erros[] = 'Link deve ter no máximo 45 caracteres.'; }
+
+    if ($erros) {
+// alterar para o nome da página html que você está utilizando
+
+      redirect_with('../PAGINAS_LOGISTA/cadastro_produtos_logista.html', ['erro_banner' => implode(' ', $erros)]);
+    }
+
+    /* Monta UPDATE dinâmico (atualiza imagem só se uma nova foi enviada), campos do BANCO DE DADOS*/
+    $setSql = "descricao = :desc, data_validade = :dt, link = :lnk, CategoriasProdutos_id = :cat";
+    if ($imgBlob !== null) {
+      $setSql = "imagem = :img, " . $setSql;
+    }
+// ALTERAR CONFORME O BANCO DE DADOS
+    $sql = "UPDATE Banners
+              SET $setSql
+            WHERE idBanners = :id";
+
+    $st = $pdo->prepare($sql);
+
+// UTILIZADO APENAS SE TIVER IMAGEM
+    if ($imgBlob !== null) {
+      $st->bindValue(':img', $imgBlob, PDO::PARAM_LOB);
+    }
+// UTILIZADO PARA TODOS OS CAMPOS OBRIGATORIOS
+    $st->bindValue(':desc', $descricao, PDO::PARAM_STR);
+    $st->bindValue(':dt',   $dataVal,   PDO::PARAM_STR);
+
+// UTILIZADO APENAS PARA CAMPOS NÃO OBRIGATORIOS
+    if ($link === '') {
+      $st->bindValue(':lnk', null, PDO::PARAM_NULL);
+    } else {
+      $st->bindValue(':lnk', $link, PDO::PARAM_STR);
+    }
+
+// UTILIZADO PARA FOREIGN KEYS
+    if ($categoria === null) {
+      $st->bindValue(':cat', null, PDO::PARAM_NULL);
+    } else {
+      $st->bindValue(':cat', $categoria, PDO::PARAM_INT);
+    }
+
+    $st->bindValue(':id', $id, PDO::PARAM_INT);
+    $st->execute();
+
+// alterar para o nome da página html que você está utilizando
+
+    redirect_with('../PAGINAS_LOGISTA/promocoes_logista.html', ['editar_banner' => 'ok']);
+
+  } catch (Throwable $e) {
+
+// alterar para o nome da página html que você está utilizando
+
+    redirect_with('../PAGINAS_LOGISTA/promocoes_logista.html', ['erro_banner' => 'Erro ao editar: ' . $e->getMessage()]);
+  }
+}
+
+/*  ============================EXCLUSÃO=========================== */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'excluir') {
+  try {
+    $id = (int)($_POST['id'] ?? 0);
+    if ($id <= 0) {
+
+// alterar para o nome da página html que você está utilizando
+      redirect_with('../PAGINAS_LOGISTA/banners_logista.html', ['erro_banner' => 'ID inválido para exclusão.']);
+    }
+
+// alterar os dados para os nomes que vem do seu banco de dados
+    $st = $pdo->prepare("DELETE FROM Banners WHERE idBanners = :id");
+    $st->bindValue(':id', $id, PDO::PARAM_INT);
+    $st->execute();
+// alterar para o nome da página html que você está utilizando
+
+    redirect_with('../PAGINAS_LOGISTA/promocoes_logista.html', ['excluir_banner' => 'ok']);
+
+  } catch (Throwable $e) {
+// alterar para o nome da página html que você está utilizando
+
+    redirect_with('../PAGINAS_LOGISTA/promocoes_logista.html', ['erro_banner' => 'Erro ao excluir: ' . $e->getMessage()]);
+  }
+}
+
+
 try{
     // SE O METODO DE ENVIO FOR DIFERENTE DO POST
     if($_SERVER["REQUEST_METHOD"] !== "POST"){
