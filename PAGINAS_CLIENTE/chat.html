@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atendimento - Tecline</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-tecline shadow-sm">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="../PAGINAS_CLIENTE/telaHome.html">
+        <img src="../IMG/LogoTecLine.png" alt="TecLine Logo" class="logo-tecline me-2">
+      </a>
+
+      <!-- Barra de pesquisa -->
+      <form class="d-none d-md-flex mx-auto w-50">
+        <input class="form-control me-2" type="search" placeholder="Pesquise o seu produto">
+        <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+
+      <!-- Ícones -->
+      <div class="d-flex align-items-center">
+        <a href="../PAGINAS_CLIENTE/chat.html" class="nav-link text-white me-3"><i class="bi bi-headset"></i> SAC</a>
+        <a href="../PAGINAS_CLIENTE/carrinho.html" class="nav-link text-white me-3"><i class="bi bi-cart3"></i> CARRINHO</a>
+        <a href="../PAGINAS_CLIENTE/login.html" class="nav-link text-white"><i class="bi bi-person-circle"></i> LOGIN</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menu de Categorias -->
+  <div class="bg-tecline">
+    <div class="container">
+      <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">DEPARTAMENTOS</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PROCESSADORES</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PLACAS DE VÍDEO</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">MONITORES</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PROMOÇÕES</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- Fim do Cabeçalho -->
+
+  <main class="container my-4">
+    <div class="card shadow-sm p-3 chat-card">
+      <h4 class="fw-bold mb-3"><i class="bi bi-headset"></i> Atendimento ao Cliente</h4>
+      
+      <!-- Área de mensagens -->
+      <div class="chat-messages p-3 mb-3 border rounded bg-light" style="height: 400px; overflow-y: auto;">
+        <!-- Mensagem do cliente -->
+        <div class="d-flex mb-3">
+          <div class="p-2 bg-primary text-white rounded-3 ms-auto" style="max-width: 70%;">
+            Olá, preciso de ajuda com meu pedido.
+          </div>
+        </div>
+
+        <!-- Mensagem do atendente -->
+        <div class="d-flex mb-3">
+          <div class="p-2 bg-secondary text-white rounded-3 me-auto" style="max-width: 70%;">
+            Olá! Claro, pode me informar o número do pedido?
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo de envio -->
+      <form class="d-flex">
+        <input type="text" class="form-control me-2" placeholder="Digite sua mensagem...">
+        <button class="btn btn-primary"><i class="bi bi-send"></i></button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+ <footer class="bg-teal-dark text-white py-4">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <div class="col-md-4 mb-3">
+        <h6>ATENDIMENTO</h6>
+        <p class="small">
+          Horário de Atendimento:<br>
+          08:00 às 20:00 - Segunda à Sexta<br>
+          09:00 às 15:00 - Sábado, horário de Brasília<br>
+          (exceto Domingos e Feriados)
+        </p>
+      </div>
+
+     <div class="col-md-4 mb-3">
+      <h6>PAGAMENTO</h6>
+      <img src="../IMG/VisaIcone.png" class="pagamento-logo">
+      <img src="../IMG/MasterCardIcone.png" class="pagamento-logo">
+      <img src="../IMG/logos--elo.png" class="pagamento-logo">
+      <img src="../IMG/logos--hipercard.png" class="pagamento-logo">
+      <img src="../IMG/BoletoIcone.png" class="pagamento-logo">
+      <img src="../IMG/PixIcone.png" class="pagamento-logo">
+     </div>
+
+      <div class="col-md-4 mb-3">
+        <h6>NOSSAS REDES SOCIAIS</h6> 
+        <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-whatsapp"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

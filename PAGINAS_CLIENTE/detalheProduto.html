@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalhe do Produto - Tecline</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-tecline shadow-sm">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="../IMG/LogoTecLine.png" alt="TecLine Logo" class="logo-tecline me-2">
+      </a>
+
+      <!-- Barra de pesquisa -->
+      <form class="d-none d-md-flex mx-auto w-50">
+        <input class="form-control me-2" type="search" placeholder="Pesquise o seu produto">
+        <button class="btn btn-outline-light" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+
+      <!-- Ícones -->
+      <div class="d-flex align-items-center">
+        <a href="../PAGINAS_CLIENTE/chat.html" class="nav-link text-white me-3"><i class="bi bi-headset"></i> SAC</a>
+        <a href="../PAGINAS_CLIENTE/carrinho.html" class="nav-link text-white me-3"><i class="bi bi-cart3"></i> CARRINHO</a>
+        <a href="../PAGINAS_CLIENTE/login.html" class="nav-link text-white"><i class="bi bi-person-circle"></i> LOGIN</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menu de Categorias -->
+  <div class="bg-tecline">
+    <div class="container">
+      <ul class="navbar-nav d-flex flex-row flex-wrap justify-content-center">
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">DEPARTAMENTOS</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PROCESSADORES</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PLACAS DE VÍDEO</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">MONITORES</a></li>
+        <li class="nav-item"><a class="nav-link text-white fw-bold" href="#">PROMOÇÕES</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- Fim do Cabeçalho -->
+
+  <main class="container my-5">
+    <div class="row g-4">
+      <!-- Imagem do produto -->
+      <div class="col-md-6">
+        <div class="border rounded shadow-sm p-3 text-center bg-white">
+          <img src="../IMG/PlacaMae 4.jpg" alt="Produto Exemplo" class="img-fluid">
+        </div>
+      </div>
+
+      <!-- Detalhes -->
+      <div class="col-md-6">
+        <h2 class="fw-bold">Placa de Vídeo RTX 4070 Ti</h2>
+        <p class="text-muted">Código: 123456</p>
+        <h3 class="text-success fw-bold">R$ 4.299,90</h3>
+        <p class="text-muted">ou 12x de R$ 374,99 sem juros</p>
+
+        <button class="btn btn-success btn-lg me-2"><i class="bi bi-cart-plus"></i> Adicionar ao Carrinho</button>
+        <button class="btn btn-outline-primary btn-lg"><i class="bi bi-heart"></i> Favoritar</button>
+
+        <hr>
+
+        <!-- Especificações -->
+        <h5 class="fw-bold">Descrição</h5>
+        <p>
+          A Placa de Vídeo RTX 4070 Ti oferece performance de última geração, ideal para jogos em 4K, 
+          edição de vídeos e renderizações em tempo real. 
+        </p>
+
+        <h5 class="fw-bold mt-4">Especificações Técnicas</h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Memória: 12GB GDDR6X</li>
+          <li class="list-group-item">Clock: 2.6 GHz</li>
+          <li class="list-group-item">Conectores: HDMI 2.1, DisplayPort 1.4a</li>
+          <li class="list-group-item">Suporte a Ray Tracing</li>
+          <li class="list-group-item">Garantia: 3 anos</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="bg-teal-dark text-white py-4 mt-5">
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-4 mb-3">
+          <h6>ATENDIMENTO</h6>
+          <p class="small">08:00 às 20:00 - Segunda à Sexta<br>09:00 às 15:00 - Sábado</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h6>PAGAMENTO</h6>
+          <img src="../IMG/visa.png" class="pagamento-logo me-2">
+          <img src="../IMG/mastercard.png" class="pagamento-logo me-2">
+          <img src="../IMG/elo.png" class="pagamento-logo me-2">
+          <img src="../IMG/hipercard.png" class="pagamento-logo me-2">
+          <img src="../IMG/pix.png" class="pagamento-logo">
+        </div>
+        <div class="col-md-4 mb-3">
+          <h6>NOSSAS REDES SOCIAIS</h6>
+          <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-whatsapp"></i></a>
+          <a href="#" class="text-white me-3"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
